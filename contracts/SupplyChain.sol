@@ -230,6 +230,7 @@ contract SupplyChain {
   function addItem(string memory _name, uint _price) public returns(bool){
 
     emit LogForSale(skuCount);
+    //require (bytes(_name).length != 0);
 
     items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: address(0)});
 
@@ -307,7 +308,10 @@ contract SupplyChain {
   }
 
 
-
+  function returnSkuCount () public view returns (uint testSkuCount) {
+    testSkuCount = skuCount;
+    return testSkuCount;
+  }
   /* We have these functions completed so we can run tests, just ignore it :) */
 
 
